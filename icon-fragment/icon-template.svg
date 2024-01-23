@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+  <defs>
+    <style type="text/css">
+      <!-- Light -->
+      .enabled {
+        --icon-01: red;
+      }
+      .active {
+        --icon-01: blue;
+      }
+      .hover {
+        --icon-01: cyan;
+      }
+      .disabled {
+        --icon-01: gray;
+      }
+      <!-- Dark -->
+      .enabled {
+        
+      }
+      .active {
+        
+      }
+      .hover {
+        
+      }
+      .disabled {
+        
+      }
+    </style>
+
+    <g id="group-id" data-name="run-test-suite">
+      <path id="path-01" fill="var(--icon-01)" class="--icon-01" d="M1.06,8.92l4.82,2.79a.4.4,0,0,1,0,.69L1.06,15.19a.4.4,0,0,1-.6-.35V9.26A.4.4,0,0,1,1.06,8.92Zm14.49,2.21h-.72a2.85,2.85,0,0,0-.39-.91L15,9.7a.24.24,0,0,0,0-.33l-.58-.58a.22.22,0,0,0-.33,0l-.52.51a2.93,2.93,0,0,0-.91-.38V8.19A.23.23,0,0,0,12.38,8h-.82a.23.23,0,0,0-.24.23v.73a2.93,2.93,0,0,0-.91.38l-.52-.51a.22.22,0,0,0-.33,0L9,9.37A.24.24,0,0,0,9,9.7l.52.51a3,3,0,0,0-.39.92H8.39a.23.23,0,0,0-.24.23v.83a.23.23,0,0,0,.24.23h.72a3,3,0,0,0,.39.92L9,13.85a.24.24,0,0,0,0,.33l.58.59a.24.24,0,0,0,.33,0l.52-.52a2.93,2.93,0,0,0,.91.38v.73a.23.23,0,0,0,.24.23h.82a.23.23,0,0,0,.24-.23v-.73a2.93,2.93,0,0,0,.91-.38l.52.52a.24.24,0,0,0,.33,0l.58-.59a.24.24,0,0,0,0-.33l-.52-.51a3,3,0,0,0,.39-.92h.72a.23.23,0,0,0,.24-.23v-.83A.23.23,0,0,0,15.55,11.13ZM12,13.76a2,2,0,1,1,2-2A2,2,0,0,1,12,13.76Zm0-2.64a.66.66,0,1,0,.65.66A.65.65,0,0,0,12,11.12Z"/>
+      <path id="path-02" fill="var(--icon-01)" class="--icon-01" d="M3.89,9.4,3,8.89A5,5,0,0,1,5.32,6.35V2.44A1.19,1.19,0,0,1,5.58.08H9.74A1.2,1.2,0,0,1,10,2.44V6.35a5.11,5.11,0,0,1,1,.73,1.22,1.22,0,0,0-.66.75A4.3,4.3,0,0,0,9.3,7.11L9,7V1.47h.73a.2.2,0,0,0,.19-.19.2.2,0,0,0-.19-.2H5.58a.2.2,0,0,0-.19.2.2.2,0,0,0,.19.19h.74V7L6,7.11A4.05,4.05,0,0,0,3.89,9.4Zm5,6.07-.58-.58a1.25,1.25,0,0,1-.08-.12,3.07,3.07,0,0,1-.53.06A4,4,0,0,1,5.19,14l-.92.54a5,5,0,0,0,3.39,1.34,5.25,5.25,0,0,0,1.39-.22A2.43,2.43,0,0,1,8.85,15.47Z"/>
+    </g>
+  </defs>
+  
+  <!-- Light -->
+
+  <!-- enabled (light) -->
+  <view id="enabled" viewBox="0 0 250 250" />
+  <use
+    href="#group-id"
+    x="0"
+    y="0"
+    class="enabled"
+  />
+
+  <!-- hover (light) -->
+  <view id="hover" viewBox="250 0 250 250" />
+  <use
+    href="#group-id"
+    x="250"
+    y="0"
+    class="hover"
+  />
+
+  <!-- active (light) -->
+  <view id="active" viewBox="500 0 250 250" />
+  <use
+    href="#group-id"
+    x="500"
+    y="0"
+    class="active"
+  />
+
+  <!-- disabled (light) -->
+  <view id="disabled" viewBox="750 0 250 250" />
+  <use
+    href="#group-id"
+    x="750"
+    y="0"
+    class="disabled"
+  />
+
+  <!-- Dark -->
+
+  <!-- enabled (dark) -->
+  <view id="enabled-dark" viewBox="0 250 250 250" />
+  <use
+    href="#group-id"
+    x="0"
+    y="250"
+    class="enabled-dark"
+  />
+
+  <!-- hover (dark) -->
+  <view id="hover-dark" viewBox="250 250 250 250" />
+  <use
+    href="#group-id"
+    x="250"
+    y="250"
+    class="hover-dark"
+  />
+
+  <!-- active (dark) -->
+  <view id="active-dark" viewBox="500 250 250 250" />
+  <use
+    href="#group-id"
+    x="500"
+    y="250"
+    class="active-dark"
+  />
+
+  <!-- disabled (dark) -->
+  <view id="disabled-dark" viewBox="750 250 250 250" />
+  <use
+    href="#group-id"
+    x="750"
+    y="250"
+    class="disabled-dark"
+  />
+</svg>
+

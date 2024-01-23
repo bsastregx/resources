@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Prism syntax highlighter -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/themes/prism.min.css"
+    />
+    <style>
+      /*General*/
+      body {
+        --light: rgb(220, 220, 220);
+        --dark: rgb(36, 36, 36);
+        font-family: sans-serif;
+        background-color: var(--light);
+        color: var(--dark);
+      }
+      body.dark {
+        --light: rgb(36, 36, 36);
+        --dark: rgb(220, 220, 220);
+        font-family: sans-serif;
+      }
+      h1 {
+        font-size: 18px;
+      }
+      h2 button {
+        font-size: 20px;
+      }
+      h3 {
+        text-decoration: underline;
+      }
+      li {
+        line-height: 1.5em;
+        margin-bottom: 12px;
+      }
+      li hr {
+        margin: 24px 0;
+      }
+      .highlight {
+        color: #005fa8;
+      }
+      img {
+        width: 100%;
+      }
+
+      /*Prism Highlighter code*/
+      .cols {
+        display: flex;
+        flex-direction: row;
+        background-color: #f5f2f0;
+      }
+      .cols .col {
+        width: 50%;
+        background-color: var(--light);
+        color: var(--dark);
+      }
+      .cols .col:first-child {
+        border-right: 1px solid gray;
+      }
+      .cols .col h2 {
+        text-align: center;
+      }
+      .cols .col code {
+        font-size: 14px;
+      }
+      .cols--padding .col {
+        padding: 24px;
+      }
+      .cols--padding *:first-child {
+        margin-top: 0;
+      }
+      .cols--padding *:last-child {
+        margin-bottom: 0;
+      }
+      pre {
+        height: 100%;
+      }
+
+      /*Icon*/
+      .icon {
+        width: 32px;
+        height: 32px;
+        display: inline-block;
+        background-repeat: no-repeat;
+      }
+      /*estados light*/
+      .icon-enabled {
+        background-image: url(./icon-mariel.svg#enabled);
+      }
+      .icon-hover {
+        background-image: url(./icon-mariel.svg#hover);
+      }
+      .icon-active {
+        background-image: url(./icon-mariel.svg#active);
+      }
+      .icon-disabled {
+        background-image: url(./icon-mariel.svg#disabled);
+      }
+
+      /*estados dark*/
+      body.dark .icon-enabled {
+        background-image: url(./icon-mariel.svg#enabled-dark);
+      }
+      body.dark .icon-hover {
+        background-image: url(./icon-mariel.svg#hover-dark);
+      }
+      body.dark .icon-active {
+        background-image: url(./icon-mariel.svg#active-dark);
+      }
+      body.dark .icon-disabled {
+        background-image: url(./icon-mariel.svg#disabled-dark);
+      }
+
+      /*test*/
+      .icon-test {
+        background-image: url(./icon-mariel.svg#enabled);
+      }
+      .icon-test:hover {
+        background-image: url(./icon-mariel.svg#hover);
+      }
+      .icon-test:active {
+        background-image: url(./icon-mariel.svg#active);
+      }
+      body.dark .icon-test {
+        background-image: url(./icon-mariel.svg#enabled-dark);
+      }
+      body.dark .icon-test:hover {
+        background-image: url(./icon-mariel.svg#hover-dark);
+      }
+      body.dark .icon-test:active {
+        background-image: url(./icon-mariel.svg#active-dark);
+      }
+    </style>
+  </head>
+  <body>
+    <h2>estados</h2>
+    <p>
+      <span class="icon icon-enabled"></span>
+      <label>enabled</label>
+    </p>
+    <p>
+      <span class="icon icon-hover"></span>
+      <label>hover</label>
+    </p>
+    <p>
+      <span class="icon icon-active"></span>
+      <label>active</label>
+    </p>
+    <p>
+      <span class="icon icon-disabled"></span>
+      <label>disabled</label>
+    </p>
+    <hr />
+    <h2>live test</h2>
+    <p>enabled, hover, active</p>
+    <span class="icon icon-test"></span>
+    <br />
+    <br />
+    <button id="toggle-dark-btn">toggle dark</button>
+
+    <hr />
+
+    <h2>Consideraciones</h2>
+    <div class="cols cols--padding">
+      <div class="col">
+        <h3>1. Para exportar el svg</h3>
+        <ul>
+          <li>
+            <p>
+              <strong>Las dimensiones importan:</strong> Si bien las dimensiones
+              del svg al exportarlo desde figma u otra herramienta, no afecta
+              significativamente el peso, sí es importante para la definición,
+              ya que la herramienta que vamos a usar está pensada sobre un área
+              (viewBox) de 2x4 (dos filas de 4 columnas). La primera fila es
+              para los 4 estados en light, y la segunda fila es para los 4
+              estados en dark. El área total del viewBox es 1000px de ancho x
+              500px de alto, reservando 250px X 250px para cada estado. Por esta
+              razón es necesario que el área del ícono exportado sea exactamente
+              de 250px X 250px. Es posible cambiar ese tamaño si surge la
+              necesidad, sólo hay que coordinar con Bruno Sastre, o Daniel
+              Mariño, para actualizar la definición.
+            </p>
+            <figure>
+              <img src="./view-box-example.png" alt="view-box example" />
+              <figcaption>final icon (figma + template)</figcaption>
+            </figure>
+          </li>
+          <li>
+            <p>
+              <strong>Clase de css para el color:</strong> Es necesario que cada
+              forma (path, circle, etc) tenga asignada una clase con el tipo del
+              color. Ej.: class="--icons-06" o "--icons-03". Actualmente en
+              Gemini existen valores del "01" al "09". Ese nombre se va a usar
+              luego para (1) automatizar la generación del svg con la definición
+              que se necesita, y también para (2) reemplazar el color de cada
+              forma si es que se actualiza uno o más colores más adelante. Ese
+              nombre no debería cambiar ya que si lo hace no es posible
+              automaitzar la actualización del color (2).
+            </p>
+
+            <ul>
+              <li>
+                <span class="highlight"
+                  >(1) automatizar la generación del svg:</span
+                >
+                <p>
+                  Suponiendo que se exportó un ícono que contiene un path
+                  parecido al siguiente:
+                </p>
+                <p>
+                  <code>
+                    &lt;path id=&quot;f3671183&quot; fill=&quot;#CCCCCC&quot;
+                    d=&quot;M1.06,8.92l4.82,2.79a.4.4,0...&quot;/
+                    <strong>class=&quot;--icons-03&quot;</strong>&gt;
+                  </code>
+                </p>
+                <p>
+                  Alguna herrmamienta de backend (ej.: node) va a obtener el
+                  nombre de clase (<em>--icons-03</em> en este caso) y va a
+                  sobreescribir el valor del fill (<em>#CCCCCC</em> en este
+                  caso) con una variable de css homónima al nombre de clase.
+                  Luego del proceso, el resultado sería el siguiente:
+                </p>
+                <code>
+                  &lt;path id=&quot;f3671183&quot;
+                  <strong>fill=&quot;var(--icons-03)&quot;</strong>
+                  d=&quot;M1.06,8.92l4.82,2.79a.4.4,0...&quot;/
+                  class=&quot;--icons-03&quot;&gt;
+                </code>
+              </li>
+              <hr />
+              <li>
+                <span class="highlight"
+                  >(2) reemplazar el color de una forma:</span
+                >
+                <p>
+                  Suponiendo que ya existen íconos con las variables de color
+                  definidas, puede surgir la necesidad de actualizar un color en
+                  todos los íconos del sistema. Por ejemplo, sustituír
+                  --icons-03 por --icons-06. Por poner un ejemplo de uno de esos
+                  íconos, el path actual sería parecido al siguiente:
+                </p>
+                <p>
+                  <code>
+                    &lt;path id=&quot;f3671183&quot;
+                    <strong>fill=&quot;var(--icons-03)&quot;</strong>
+                    d=&quot;M1.06,8.92l4.82,2.79a.4.4,0...&quot;/
+                    class=&quot;--icons-03&quot;&gt;
+                  </code>
+                </p>
+                <p>
+                  Alguna herramienta de backend (el.: node) va a buscar en todos
+                  los íconos de la colección, los paths que contengan el nombre
+                  de clase "--icons-03", y va a reemplazar tanto el nombre de la
+                  clase, como el del fill, por "--icons-06". En el caso del fill
+                  lo va a hacer agregando una variables de css
+                  <code>var(--icons-06)</code>.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Plugin para agregar clase a figura:</strong> De momento
+            figma no sólo permite identificar y exportar las figuras con un id.
+            Para agregar una clase se puede usar este plugin:
+            <a
+              href="https://www.figma.com/community/plugin/814345141907543603"
+              target="_blank"
+              >SVG Export</a
+            >
+          </li>
+        </ul>
+
+        <h3>2. Para estructurar el svg exportado</h3>
+        <ul>
+          <li>
+            Una vez exportado el svg con el nombre de clase asignado, hay que
+            modificarlo para que cumpla con la definición que se necesita. Se
+            puede ver un template de la definicón
+            <button class="button-examples" data-pre="template-pre">
+              haciendo clic acá.
+            </button>
+          </li>
+          <li>
+            <p>
+              Este proceso se puede hacer mano, pero se recomienda la
+              automatización con node.
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Para los estilos</h3>
+        <ul>
+          <li>
+            <p>
+              El svg se puede usar tanto en una etiqueta img, o como
+              backkground-image.
+            </p>
+          </li>
+          <li>
+            <p>
+              Para usarlo como background-image, habrá que modificar la ruta
+              url, agregando un hash con el nombre del estado. Ese nombre debe
+              corresponderse con el id del <code>view</code> del svg (uno para
+              cada estado). Si por ejemplo, queremos definir el estado para el
+              hover del ícono "bpm", el css sería este:
+            </p>
+            <pre>
+<code class="language-css">
+&lt;style&gt;
+  .icon {
+    width: 32px;
+    height: 32px;
+    /*otras propiedades...*/
+  }
+  .bpm:hover {
+    background-image: url(ruta-a-la-carpeta/bpm.svg#hover);
+  }
+&lt;/style&gt;
+
+&lt;span class=&quot;icon bpm&quot;&gt;&lt;/span&gt;</code></pre>
+          </li>
+          <li>
+            <p>
+              Para dark, habría que hacer otro selector que contenga la clase
+              "dark", por ejemplo:
+            </p>
+            <pre>
+<code class="language-css">
+&lt;style&gt;
+.icon {
+  width: 32px;
+  height: 32px;
+  /*otras propiedades...*/
+}
+html.dark .bpm:hover {
+  background-image: url(ruta-a-la-carpeta/bpm.svg#hover-dark);
+}
+&lt;/style&gt;
+&lt;span class=&quot;icon bpm&quot;&gt;&lt;/span&gt;</code></pre>
+          </li>
+          <li>
+            <p>
+              También se puede definir una clase que muestre el estado hover,
+              sin necesidad de estar en hover con el cursor. Esto puede resultar
+              útil, para simularlo programáticamente. Por ejemplo:
+            </p>
+            <pre><code class="language-css">
+&lt;style&gt;
+.icon {
+  width: 32px;
+  height: 32px;
+  /*otras propiedades...*/
+}
+.bpm.hover {
+  background-image: url(ruta-a-la-carpeta/bpm.svg#hover);
+}
+&lt;/style&gt;
+&lt;span class=&quot;bpm hover&quot;&gt;&lt;/span&gt;</code></pre>
+          </li>
+          <li>
+            <p>
+              Lo mencionado anteriormente aplica para todos los estados:
+              enabled, hover, active, y disabled.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="cols">
+      <div class="col" id="col--left">
+        <h2 style="margin-bottom: 0">svg</h2>
+        <div style="display: flex; justify-content: center; gap: 8px">
+          <h2>
+            <button class="button-examples" data-pre="exportado-figma-pre">
+              exportado figma
+            </button>
+          </h2>
+          <h2>
+            <button class="button-examples" data-pre="template-pre">
+              template
+            </button>
+          </h2>
+          <h2>
+            <button class="button-examples" data-pre="final-pre">
+              final (figma + template)
+            </button>
+          </h2>
+        </div>
+
+        <!-- code "exportado-figma" -->
+        <pre id="exportado-figma-pre" hidden><code class="language-css">
+&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;250&quot; height=&quot;250&quot; fill=&quot;none&quot; viewBox=&quot;0 0 250 250&quot;&gt;
+  &lt;g class=&quot;icon-2&quot;&gt;
+    &lt;path fill=&quot;#fff&quot; d=&quot;M0 0h250v250H0z&quot;/&gt;
+    &lt;path fill=&quot;#D9D9D9&quot; d=&quot;M73 59h68v68H73z&quot; class=&quot;--icons-02&quot;/&gt;
+    &lt;ellipse cx=&quot;170&quot; cy=&quot;169.5&quot; fill=&quot;#D9D9D9&quot; class=&quot;--icons-03&quot; rx=&quot;23&quot; ry=&quot;22.5&quot;/&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;
+</code></pre>
+
+        <!-- code "template" -->
+        <pre id="template-pre" hidden><code class="language-css">
+
+  &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 250 250&quot;&gt;
+  &lt;defs&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+      &lt;!-- Light --&gt;
+      .enabled {
+        --icon-01: red;
+      }
+      .active {
+        --icon-01: blue;
+      }
+      .hover {
+        --icon-01: cyan;
+      }
+      .disabled {
+        --icon-01: gray;
+      }
+      &lt;!-- Dark --&gt;
+      .enabled {
+        
+      }
+      .active {
+        
+      }
+      .hover {
+        
+      }
+      .disabled {
+        
+      }
+    &lt;/style&gt;
+
+    &lt;g id=&quot;group-id&quot; data-name=&quot;run-test-suite&quot;&gt;
+      &lt;path id=&quot;path-01&quot; fill=&quot;var(--icon-01)&quot; class=&quot;--icon-01&quot; d=&quot;M1.06,8.92l4.82,2.79a.4.4,0,0,1,0,.69L1.06,15.19a.4.4,0,0,1-.6-.35V9.26A.4.4,0,0,1,1.06,8.92Zm14.49,2.21h-.72a2.85,2.85,0,0,0-.39-.91L15,9.7a.24.24,0,0,0,0-.33l-.58-.58a.22.22,0,0,0-.33,0l-.52.51a2.93,2.93,0,0,0-.91-.38V8.19A.23.23,0,0,0,12.38,8h-.82a.23.23,0,0,0-.24.23v.73a2.93,2.93,0,0,0-.91.38l-.52-.51a.22.22,0,0,0-.33,0L9,9.37A.24.24,0,0,0,9,9.7l.52.51a3,3,0,0,0-.39.92H8.39a.23.23,0,0,0-.24.23v.83a.23.23,0,0,0,.24.23h.72a3,3,0,0,0,.39.92L9,13.85a.24.24,0,0,0,0,.33l.58.59a.24.24,0,0,0,.33,0l.52-.52a2.93,2.93,0,0,0,.91.38v.73a.23.23,0,0,0,.24.23h.82a.23.23,0,0,0,.24-.23v-.73a2.93,2.93,0,0,0,.91-.38l.52.52a.24.24,0,0,0,.33,0l.58-.59a.24.24,0,0,0,0-.33l-.52-.51a3,3,0,0,0,.39-.92h.72a.23.23,0,0,0,.24-.23v-.83A.23.23,0,0,0,15.55,11.13ZM12,13.76a2,2,0,1,1,2-2A2,2,0,0,1,12,13.76Zm0-2.64a.66.66,0,1,0,.65.66A.65.65,0,0,0,12,11.12Z&quot;/&gt;
+      &lt;path id=&quot;path-02&quot; fill=&quot;var(--icon-01)&quot; class=&quot;--icon-01&quot; d=&quot;M3.89,9.4,3,8.89A5,5,0,0,1,5.32,6.35V2.44A1.19,1.19,0,0,1,5.58.08H9.74A1.2,1.2,0,0,1,10,2.44V6.35a5.11,5.11,0,0,1,1,.73,1.22,1.22,0,0,0-.66.75A4.3,4.3,0,0,0,9.3,7.11L9,7V1.47h.73a.2.2,0,0,0,.19-.19.2.2,0,0,0-.19-.2H5.58a.2.2,0,0,0-.19.2.2.2,0,0,0,.19.19h.74V7L6,7.11A4.05,4.05,0,0,0,3.89,9.4Zm5,6.07-.58-.58a1.25,1.25,0,0,1-.08-.12,3.07,3.07,0,0,1-.53.06A4,4,0,0,1,5.19,14l-.92.54a5,5,0,0,0,3.39,1.34,5.25,5.25,0,0,0,1.39-.22A2.43,2.43,0,0,1,8.85,15.47Z&quot;/&gt;
+    &lt;/g&gt;
+  &lt;/defs&gt;
+  
+  &lt;!-- Light --&gt;
+
+  &lt;!-- enabled (light) --&gt;
+  &lt;view id=&quot;enabled&quot; viewBox=&quot;0 0 250 250&quot; /&gt;
+  &lt;use
+    href=&quot;#group-id&quot;
+    x=&quot;0&quot;
+    y=&quot;0&quot;
+    class=&quot;enabled&quot;
+  /&gt;
+
+  &lt;!-- hover (light) --&gt;
+  &lt;view id=&quot;hover&quot; viewBox=&quot;250 0 250 250&quot; /&gt;
+  &lt;use
+    href=&quot;#group-id&quot;
+    x=&quot;250&quot;
+    y=&quot;0&quot;
+    class=&quot;hover&quot;
+  /&gt;
+
+  &lt;!-- active (light) --&gt;
+  &lt;view id=&quot;active&quot; viewBox=&quot;500 0 250 250&quot; /&gt;
+  &lt;use
+    href=&quot;#group-id&quot;
+    x=&quot;500&quot;
+    y=&quot;0&quot;
+    class=&quot;active&quot;
+  /&gt;
+
+  &lt;!-- disabled (light) --&gt;
+  &lt;view id=&quot;disabled&quot; viewBox=&quot;750 0 250 250&quot; /&gt;
+  &lt;use
+    href=&quot;#group-id&quot;
+    x=&quot;750&quot;
+    y=&quot;0&quot;
+    class=&quot;disabled&quot;
+  /&gt;
+
+  &lt;!-- Dark --&gt;
+
+  &lt;!-- enabled (dark) --&gt;
+  &lt;view id=&quot;enabled-dark&quot; viewBox=&quot;0 250 250 250&quot; /&gt;
+  &lt;use
+    href=&quot;#group-id&quot;
+    x=&quot;0&quot;
+    y=&quot;250&quot;
+    class=&quot;enabled-dark&quot;
+  /&gt;
+
+  &lt;!-- hover (dark) --&gt;
+  &lt;view id=&quot;hover-dark&quot; viewBox=&quot;250 250 250 250&quot; /&gt;
+  &lt;use
+    href=&quot;#group-id&quot;
+    x=&quot;250&quot;
+    y=&quot;250&quot;
+    class=&quot;hover-dark&quot;
+  /&gt;
+
+  &lt;!-- active (dark) --&gt;
+  &lt;view id=&quot;active-dark&quot; viewBox=&quot;500 250 250 250&quot; /&gt;
+  &lt;use
+    href=&quot;#group-id&quot;
+    x=&quot;500&quot;
+    y=&quot;250&quot;
+    class=&quot;active-dark&quot;
+  /&gt;
+
+  &lt;!-- disabled (dark) --&gt;
+  &lt;view id=&quot;disabled-dark&quot; viewBox=&quot;750 250 250 250&quot; /&gt;
+  &lt;use
+    href=&quot;#group-id&quot;
+    x=&quot;750&quot;
+    y=&quot;250&quot;
+    class=&quot;disabled-dark&quot;
+  /&gt;
+&lt;/svg&gt;        
+
+</code></pre>
+
+        <!-- code "final" -->
+        <pre id="final-pre"><code class="language-css">
+  &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 250 250&quot;&gt;
+    &lt;defs&gt;
+      &lt;style type=&quot;text/css&quot;&gt;
+        &lt;!-- Light --&gt;
+        .enabled {
+          --icons-01: #39b54a;
+          --icons-05: #616164;
+        }
+        .active {
+          --icons-01: #2fa640;
+          --icons-05: #3e3f42;
+        }
+        .hover {
+          --icons-01: #79cc81;
+          --icons-05: #828385;
+        }
+        .disabled {
+          --icons-01: #a4a5a6;
+          --icons-05: #a4a5a6;
+        }
+        &lt;!-- Dark --&gt;
+        .enabled-dark {
+          --icons-01: orange;
+          --icons-05: #fff;
+        }
+        .active-dark {
+          --icons-01: #db8e00;
+          --icons-05: #fff;
+        }
+        .hover-dark {
+          --icons-01: #ffc65e;
+          --icons-05: #fff;
+        }
+        .disabled-dark {
+          --icons-01: #676767;
+          --icons-05: #676767;
+        }
+        &lt;!-- Dark --&gt;
+      &lt;/style&gt;
+
+      &lt;g id=&quot;e55811c8-4490-455d-86d6-105ecdf7d6b5&quot; data-name=&quot;run-test-suite&quot;&gt;
+        &lt;path id=&quot;f3671183-511f-474f-80fc-5a4532c4d13c&quot; fill=&quot;var(--icons-01)&quot; d=&quot;M1.06,8.92l4.82,2.79a.4.4,0...&quot;/&gt;
+        &lt;path id=&quot;f4d3d3fe-4ab6-4504-9384-a7d336c0d39b&quot; fill=&quot;var(--icons-05)&quot; d=&quot;M1.06,8.92l4.82,2.79a.4.4,0...&quot;/&gt;
+      &lt;/g&gt;
+    &lt;/defs&gt;
+    
+    &lt;!-- Light --&gt;
+
+    &lt;!-- enabled (light) --&gt;
+    &lt;view id=&quot;enabled&quot; viewBox=&quot;0 0 250 250&quot; /&gt;
+    &lt;use
+      href=&quot;#e55811c8-4490-455d-86d6-105ecdf7d6b5&quot;
+      x=&quot;0&quot;
+      y=&quot;0&quot;
+      class=&quot;enabled&quot;
+    /&gt;
+
+    &lt;!-- hover (light) --&gt;
+    &lt;view id=&quot;hover&quot; viewBox=&quot;250 0 250 250&quot; /&gt;
+    &lt;use
+      href=&quot;#e55811c8-4490-455d-86d6-105ecdf7d6b5&quot;
+      x=&quot;250&quot;
+      y=&quot;0&quot;
+      class=&quot;hover&quot;
+    /&gt;
+
+    &lt;!-- active (light) --&gt;
+    &lt;view id=&quot;active&quot; viewBox=&quot;500 0 250 250&quot; /&gt;
+    &lt;use
+      href=&quot;#e55811c8-4490-455d-86d6-105ecdf7d6b5&quot;
+      x=&quot;500&quot;
+      y=&quot;0&quot;
+      class=&quot;active&quot;
+    /&gt;
+
+    &lt;!-- disabled (light) --&gt;
+    &lt;view id=&quot;disabled&quot; viewBox=&quot;750 0 250 250&quot; /&gt;
+    &lt;use
+      href=&quot;#e55811c8-4490-455d-86d6-105ecdf7d6b5&quot;
+      x=&quot;750&quot;
+      y=&quot;0&quot;
+      class=&quot;disabled&quot;
+    /&gt;
+
+    &lt;!-- Dark --&gt;
+
+    &lt;!-- enabled (dark) --&gt;
+    &lt;view id=&quot;enabled-dark&quot; viewBox=&quot;0 250 250 250&quot; /&gt;
+    &lt;use
+      href=&quot;#e55811c8-4490-455d-86d6-105ecdf7d6b5&quot;
+      x=&quot;0&quot;
+      y=&quot;250&quot;
+      class=&quot;enabled-dark&quot;
+    /&gt;
+
+    &lt;!-- hover (dark) --&gt;
+    &lt;view id=&quot;hover-dark&quot; viewBox=&quot;250 250 250 250&quot; /&gt;
+    &lt;use
+      href=&quot;#e55811c8-4490-455d-86d6-105ecdf7d6b5&quot;
+      x=&quot;250&quot;
+      y=&quot;250&quot;
+      class=&quot;hover-dark&quot;
+    /&gt;
+
+    &lt;!-- active (dark) --&gt;
+    &lt;view id=&quot;active-dark&quot; viewBox=&quot;500 250 250 250&quot; /&gt;
+    &lt;use
+      href=&quot;#e55811c8-4490-455d-86d6-105ecdf7d6b5&quot;
+      x=&quot;500&quot;
+      y=&quot;250&quot;
+      class=&quot;active-dark&quot;
+    /&gt;
+
+    &lt;!-- disabled (dark) --&gt;
+    &lt;view id=&quot;disabled-dark&quot; viewBox=&quot;750 250 250 250&quot; /&gt;
+    &lt;use
+      href=&quot;#e55811c8-4490-455d-86d6-105ecdf7d6b5&quot;
+      x=&quot;750&quot;
+      y=&quot;250&quot;
+      class=&quot;disabled-dark&quot;
+    /&gt;
+  &lt;/svg&gt;
+
+</code></pre>
+      </div>
+      <div class="col">
+        <div style="display: flex; justify-content: center; gap: 8px">
+          <h2 style="margin: 43px"><button>estilos</button></h2>
+        </div>
+        <pre><code class="language-css">
+  /*estados light*/
+  .icon-enabled {
+    background-image: url(./icon-mariel.svg#enabled);
+  }
+  .icon-hover {
+    background-image: url(./icon-mariel.svg#hover);
+  }
+  .icon-active {
+    background-image: url(./icon-mariel.svg#active);
+  }
+  .icon-disabled {
+    background-image: url(./icon-mariel.svg#disabled);
+  }
+
+  /*estados dark*/
+  body.dark .icon-enabled {
+    background-image: url(./icon-mariel.svg#enabled-dark);
+  }
+  body.dark .icon-hover {
+    background-image: url(./icon-mariel.svg#hover-dark);
+  }
+  body.dark .icon-active {
+    background-image: url(./icon-mariel.svg#active-dark);
+  }
+  body.dark .icon-disabled {
+    background-image: url(./icon-mariel.svg#disabled-dark);
+  }
+
+  /*test*/
+  .icon-test {
+    background-image: url(./icon-mariel.svg#enabled);
+  }
+  .icon-test:hover {
+    background-image: url(./icon-mariel.svg#hover);
+  }
+  .icon-test:active {
+    background-image: url(./icon-mariel.svg#active);
+  }
+  body.dark .icon-test {
+    background-image: url(./icon-mariel.svg#enabled-dark);
+  }
+  body.dark .icon-test:hover {
+    background-image: url(./icon-mariel.svg#hover-dark);
+  }
+  body.dark .icon-test:active {
+    background-image: url(./icon-mariel.svg#active-dark);
+  }
+</code></pre>
+      </div>
+    </div>
+
+    <script>
+      const body = document.body;
+      const toggleDarkBtn = document.getElementById("toggle-dark-btn");
+      toggleDarkBtn.addEventListener("click", (e) => {
+        body.classList.toggle("dark");
+      });
+
+      const colLeftPre = Array.from(
+        document.querySelectorAll("#col--left pre")
+      );
+
+      const togglePre = (btnDataPre) => {
+        colLeftPre.forEach((pre) => {
+          const preID = pre.getAttribute("id");
+          if (preID === btnDataPre) {
+            pre.removeAttribute("hidden");
+          } else {
+            pre.setAttribute("hidden", true);
+          }
+        });
+      };
+
+      /*reference buttons*/
+      const exmplesButtons = document.querySelectorAll(".button-examples");
+      exmplesButtons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+          const preReference = e.srcElement.getAttribute("data-pre");
+          togglePre(preReference);
+        });
+      });
+    </script>
+  </body>
+</html>

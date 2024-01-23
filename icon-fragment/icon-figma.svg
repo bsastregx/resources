@@ -1,0 +1,66 @@
+<svg viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style type="text/css">
+      .enabled {
+        --icon-green: green;
+        --icon-orange: orange;
+      }
+      .active {
+        --icon-green: limegreen;
+        --icon-orange: orangered;
+      }
+      .hover {
+        --icon-green: olivedrab;
+        --icon-orange: darkorange;
+      }
+      .disabled {
+        --icon-green: gray;
+        --icon-orange: gray;
+      }
+    </style>
+
+    <g id="catalog-objects">
+      <rect x="36" y="29" width="95" height="95" fill="var(--icon-orange)" class="icon-orange"></rect>
+      <path d="M158.5 139L206.564 222.25H110.436L158.5 139Z" fill="var(--icon-green)" class="icon-green"></path>
+      <circle cx="188.5" cy="92.5" r="26.5" fill="var(--icon-green)" class="icon-green"></circle>
+    </g>
+
+  </defs>
+
+  <!-- enabled -->
+  <view id="enabled" viewBox="0 0 250 250" />
+  <use
+    href="#catalog-objects"
+    x="0"
+    y="0"
+    class="enabled"
+  />
+
+  <!-- hover -->
+  <view id="hover" viewBox="250 0 250 250" />
+  <use
+    href="#catalog-objects"
+    x="250"
+    y="0"
+    class="hover"
+  />
+
+  <!-- active -->
+  <view id="active" viewBox="500 0 250 250" />
+  <use
+    href="#catalog-objects"
+    x="500"
+    y="0"
+    class="active"
+  />
+
+  <!-- disabled -->
+  <view id="disabled" viewBox="750 0 250 250" />
+  <use
+    href="#catalog-objects"
+    x="750"
+    y="0"
+    class="disabled"
+  />
+</svg>
+

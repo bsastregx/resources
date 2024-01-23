@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      h1 {
+        font-size: 18px;
+      }
+      p {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .icon {
+        width: 32px;
+        height: 32px;
+        display: inline-block;
+        background-repeat: no-repeat;
+      }
+      /*estados*/
+      .icon-enabled {
+        background-image: url(./icon-figma.svg#enabled);
+      }
+      .icon-hover {
+        background-image: url(./icon-figma.svg#hover);
+      }
+      .icon-active {
+        background-image: url(./icon-figma.svg#active);
+      }
+      .icon-disabled {
+        background-image: url(./icon-figma.svg#disabled);
+      }
+      /*estados*/
+      .icon-test {
+        background-image: url(./icon-figma.svg#enabled);
+      }
+      .icon-test:hover {
+        background-image: url(./icon-figma.svg#hover);
+      }
+      .icon-test:active {
+        background-image: url(./icon-figma.svg#active);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>estados</h1>
+    <p>
+      <span class="icon icon-enabled"></span>
+      <label>enabled</label>
+    </p>
+    <p>
+      <span class="icon icon-hover"></span>
+      <label>hover</label>
+    </p>
+    <p>
+      <span class="icon icon-active"></span>
+      <label>active</label>
+    </p>
+    <p>
+      <span class="icon icon-disabled"></span>
+      <label>disabled</label>
+    </p>
+    <hr />
+    <h1>test</h1>
+    <p>enabled, hover, active</p>
+    <span class="icon icon-test"></span>
+  </body>
+</html>
