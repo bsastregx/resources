@@ -1,6 +1,6 @@
 <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
   <rect x="0" y="0" width="10" height="10" fill="#111111" class="--icons-01" />
   <rect x="0" y="10" width="10" height="10" fill="#222222" class="--icons-02" />
-  <rect x="10" y="0" width="10" height="10" fill="#333333" class="--icons-013" />
+  <rect x="10" y="0" width="10" height="10" fill="#333333" class="--icons-03" />
   <rect x="10" y="10" width="10" height="10" fill="#444444" class="--icons-04" />
 </svg>
