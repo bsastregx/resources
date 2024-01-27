@@ -1,0 +1,132 @@
+<svg viewBox="0 0 $width$ $height$" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <g id="icon-def">
+        $content$
+    </g>
+
+    <style type="text/css">
+        .enabled-light {
+            --icons-01: #0266a0;
+            --icons-02: #605cab;
+            --icons-03: #00746b;
+            --icons-04: #00a99d;
+            --icons-05: #39b54a;
+            --icons-06: #ed145b;
+            --icons-07: #f26522;
+            --icons-08: #f7941d;
+            --icons-09: #616164;
+        }
+        .hover-light {
+            --icons-01: #2088c2;
+            --icons-02: #9e9ecc;
+            --icons-03: #009187;
+            --icons-04: #7ccdc7;
+            --icons-05: #79cc81;
+            --icons-06: #f4608d;
+            --icons-07: #f59065;
+            --icons-08: #fab454;
+            --icons-09: #828385;
+        }
+        .active-light {
+            --icons-01: #004a81;
+            --icons-02: #484099;
+            --icons-03: #02645b;
+            --icons-04: #00998c;
+            --icons-05: #2fa640;
+            --icons-06: #dc105a;
+            --icons-07: #e75e1e;
+            --icons-08: #f3891b;
+            --icons-09: #3e3f42;
+        }
+        .disabled-light {
+            --icons-01: #a4a5a6;
+            --icons-02: #a4a5a6;
+            --icons-03: #a4a5a6;
+            --icons-04: #a4a5a6;
+            --icons-05: #a4a5a6;
+            --icons-06: #a4a5a6;
+            --icons-07: #a4a5a6;
+            --icons-08: #a4a5a6;
+            --icons-09: #a4a5a6;
+        }
+
+
+        .enabled-dark {
+            --icons-01: #4ba3d4;
+            --icons-02: #9e9ecc;
+            --icons-03: #24a19a;
+            --icons-04: #7ccdc7;
+            --icons-05: #a1daa5;
+            --icons-06: #f4608d;
+            --icons-07: #f59065;
+            --icons-08: #fab454;
+            --icons-09: #a4a5a6;
+        }
+        .hover-dark {
+            --icons-01: #6abee0;
+            --icons-02: #c4c4e1;
+            --icons-03: #7ec8c5;
+            --icons-04: #b0e0dd;
+            --icons-05: #c6e8c8;
+            --icons-06: #f78ead;
+            --icons-07: #facebc;
+            --icons-08: #fddfb4;
+            --icons-09: #828385;
+        }
+        .active-dark {
+            --icons-01: #4497c6;
+            --icons-02: #7979b8;
+            --icons-03: #009088;
+            --icons-04: #45b9b1;
+            --icons-05: #7bcc81;
+            --icons-06: #f03d73;
+            --icons-07: #f37943;
+            --icons-08: #f9a533;
+            --icons-09: #c6c6c7;
+        }
+        .disabled-dark {
+            --icons-01: #3e3f42;
+            --icons-02: #3e3f42;
+            --icons-03: #3e3f42;
+            --icons-04: #3e3f42;
+            --icons-05: #3e3f42;
+            --icons-06: #3e3f42;
+            --icons-07: #3e3f42;
+            --icons-08: #3e3f42;
+            --icons-09: #3e3f42;
+        }
+    </style>
+  </defs>
+
+  <view id="enabled" viewBox="$x-enabled$ 0 $width$ $height$" />
+  <use
+    href="#icon-def"
+    x="$x-enabled$"
+    y="0"
+    class="enabled-$color-scheme$"
+  />
+
+  <view id="hover" viewBox="$x-hover$ 0 $width$ $height$" />
+  <use
+    href="#icon-def"
+    x="$x-hover$"
+    y="0"
+    class="hover-$color-scheme$"
+  />
+
+  <view id="active" viewBox="$x-active$ 0 $width$ $height$" />
+  <use
+    href="#icon-def"
+    x="$x-active$"
+    y="0"
+    class="active-$color-scheme$"
+  />
+
+  <view id="disabled" viewBox="$x-disabled$ 0 $width$ $height$" />
+  <use
+    href="#icon-def"
+    x="$x-disabled$"
+    y="0"
+    class="disabled-$color-scheme$"
+  />
+</svg>
