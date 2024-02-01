@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+	<defs>
+		<g id="a">
+			<path fill="var(--a)" d="M0 0h10v10H0z" />
+			<path fill="var(--b)" d="M0 10h10v10H0z" />
+			<path fill="var(--c)" d="M10 0h10v10H10z" />
+			<path fill="var(--d)" d="M10 10h10v10H10z" />
+		</g>
+	</defs>
+	<view id="enabled" viewBox="0 0 20 20" />
+	<use href="#a" style="--a:#4ba3d4;--b:#9e9ecc;--c:#24a19a;--d:#7ccdc7" />
+	<view id="hover" viewBox="20 0 20 20" />
+	<use x="20" href="#a" style="--a:#6abee0;--b:#c4c4e1;--c:#7ec8c5;--d:#b0e0dd" />
+	<view id="active" viewBox="40 0 20 20" />
+	<use x="40" href="#a" style="--a:#4497c6;--b:#7979b8;--c:#009088;--d:#45b9b1" />
+	<view id="disabled" viewBox="60 0 20 20" />
+	<use x="60" href="#a" style="--a:#3e3f42;--b:#3e3f42;--c:#3e3f42;--d:#3e3f42" />
+</svg>

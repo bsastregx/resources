@@ -47,7 +47,9 @@ function getOutputPaths(file) {
 
 function processSvg(data, output) {
   const size = getSize(data);
-  const content = getContent(data);
+  console.log("content before", getContent(data));
+  const content = updateFill(getContent(data));
+  console.log("content after", content);
   let svg = template;
 
   svg = setSize(svg, size.width, size.height);
@@ -90,6 +92,31 @@ function setX(svg, width) {
     .replaceAll("$x-hover$", size * 1)
     .replaceAll("$x-active$", size * 2)
     .replaceAll("$x-disabled$", size * 3);
+}
+
+/**
+ * @description For every figure (path, circle, etc) it will update the fill value with a css var()
+ * that matches the class name. For example, if the class name is "--icon-04" the fill value will be
+ * updated to "var(--icon-04)".
+ */
+function updateFill(content) {
+  let updatedContent = "";
+  const $ = cheerio.load(content, { xmlMode: true });
+  const htmlFigures = $("*:not(body):not(html):not(head)");
+  htmlFigures.each((i, htmlFigure) => {
+    const cssClass = htmlFigure.attribs.class;
+    if (!cssClass) {
+      //if no class exist, use --icons-01
+      htmlFigure.attribs.fill = "var(--icons-01)";
+    } else {
+      htmlFigure.attribs.fill = `var(${cssClass})`;
+      //Remove class, not needed anymore
+      delete htmlFigure.attribs.class;
+    }
+    //convert object to string
+    updatedContent += $.html(htmlFigure);
+  });
+  return updatedContent;
 }
 
 function removeUnusedVars(svg, content) {
