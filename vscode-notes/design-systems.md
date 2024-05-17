@@ -22,3 +22,8 @@
 ## svg-sass-generator
 
 ajustar para que la source folder pueda estar en n niveles de profundidad
+
+## pregutas para Nico
+
+- por qué label y form-text están en el mismo form-control.scss ? Pueod tenerlos por separado ?
+- $icons-assets
