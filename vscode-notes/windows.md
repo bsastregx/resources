@@ -1,0 +1,5 @@
+# windows
+
+## chocolatey
+
+- choco list
