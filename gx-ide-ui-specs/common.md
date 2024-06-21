@@ -19,7 +19,7 @@ type FormElementValidation = {
 
 #### `FormSubmitResult` {#FormSubmitResult}
 
-```
+```console.log('',);
 type FormSubmitResult = {
   success: boolean;
   fieldErrors: FormElementValidation[];
