@@ -12,13 +12,12 @@ Agregar la carpeta, y luego decirle a git que la carpeta no tiene cambios:
 
 ## naming de branches
 
-- Feature Branches: `update/short-description`
 - Feature Branches: `feature/short-description`
 - Bug Fix Branches: `bugfix/short-description`
 - Hotfix Branches (urgent fixes): `hotfix/short-description`
 - Release Branches: `release/version-number`
 - Experimental Branches: `experiment/short-description`
-
----
-
+- Improvement: `improvement/short-description`
+- Refactor: `refactor/short-description`
 - Package on a monorepo: `package/bugfix/short-description`
+- Mantenimiento del rpo: `package/chore/short-description`
