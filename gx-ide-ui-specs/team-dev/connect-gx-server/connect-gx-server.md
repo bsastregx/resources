@@ -36,11 +36,10 @@ Array de URLs de servidores catalogados a mostrarse en el combo
 
 `true` si el usuario ya se encuentra autenticado en el IDE Web.
 
-- Si es `true`: - Se debe mostrar habilitado y chequeado el checkbox Continue with GX Account
+- Si es `true` se debe mostrar habilitado y chequeado el checkbox Continue with GX Account
   El usuario puede des-seleccionar el checkbox y se debe permitir ingresar usuario y contraseña.
 
-- Si es `false`:
-  - Se tiene que mostrar deshabilitado y deschequeado y directamente ya mostrar las opciones para ingresar usuario y contraseña.
+- Si es `false` Se tiene que mostrar deshabilitado y deschequeado y directamente ya mostrar las opciones para ingresar usuario y contraseña.
 
 #### `defaultConnectionData?:GXServerConnectionDefault`
 
