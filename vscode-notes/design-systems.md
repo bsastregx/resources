@@ -26,4 +26,7 @@ ajustar para que la source folder pueda estar en n niveles de profundidad
 ## pregutas para Nico
 
 - por qué label y form-text están en el mismo form-control.scss ? Pueod tenerlos por separado ?
-- $icons-assets
+
+- $icons-assets debería cargarse antes que los mixins... me está saltando que $icons-path no existe.
+
+- tuve que actualizar a node 20, porque me daba problemas el 16.
