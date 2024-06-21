@@ -9,9 +9,10 @@
 
 file > preferences > settings > word wrap: on
 
-## bookmark next
+## bookmark
 
-ctrl + alt + L
+next: ctrl + alt + L
+mark: ctrl + alt + ñ
 
 ## ir a keyboard shorcuts
 

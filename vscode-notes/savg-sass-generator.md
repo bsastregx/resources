@@ -11,4 +11,10 @@
 
 - crear un map a nivel global para los colores monochrome, del tipo "name" -> index. Para poder encontrar el color más rápidamente en "create-monochrome-svg.ts".
 
+LUEGO:
+
+======================================================================
+
 - refactorizar: tratar de hacer globales todas las variables que sean posibles, a fin de pasar menos argumentos a las funciones. Ej: log file.
+
+- renombrar todos los types e interfaces a PascalCase

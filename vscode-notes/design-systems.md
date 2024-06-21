@@ -31,24 +31,9 @@ ajustar para que la source folder pueda estar en n niveles de profundidad
 
 - --keepExisting lo quité de copy-assets, porque me interesa mantener siempre un /dist fresco. Pero --keepExisting me pregunta cuando no está presente la flag. Eliminamos la carpeta /dist antes de hacer el build?
 
-Lo generé fuera:
+# ignore generated icons and sass files (svg-sass-generator)
 
-$output-selector-generated: str-replace(
-      $monochrome-icon-selector,
-      "%",
-      "."
-    );
-@include button-icon-style-monochrome(
-  $input-selector: #{$monochrome-icon-selector},
-$output-selector: #{$output-selector-generated},
-$light: $light,
-$dark: $dark,
-$light-theme-selector: $light-theme-selector,
-$dark-theme-selector: $dark-theme-selector,
-$on-surface: $on-surface,
-$on-primary: $on-primary,
-$on-primary-active: $on-primary-active
-);
-
-commit description:
-Each monochrome state should implement one value for each state: enabled, hover, active and disabled, just as the multicolor icons do. If a monochrome color implements only one state, the other should be null.
+/showcase/assets/icons/
+/showcase/icons/
+/src/assets/icons/
+/src/icons/\_generated/
