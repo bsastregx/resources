@@ -13,10 +13,8 @@ Combo-box con las URLs catalogadas de los GX Servers conocidos. El campo debe se
 **Continue with GeneXus Account**:
 El tener seleccionado este checkbox, indica que el usuario quiere utilizar la misma cuenta con la que se encuentra autenticado en el IDE web para establecer la conexión con el GXserver. El tener seleccionado este checkbox los campos de _Username_ y _Password_ quedan ocultos, ya que no son necesarios.
 
-<figure>
-  <img src="connect-gx-server-no-gx-account.svg">
-  <figcaption>conección con usuario y password</figcaption>
-</figure>
+_conección con usuario y password:_
+![connect-gx-server-gx-account](connect-gx-server-no-gx-account.svg)
 
 **Username y Password**
 
