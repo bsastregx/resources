@@ -56,7 +56,7 @@ Callback que debe ser invocado cuando se presiona el botón 'Connect'.
 ```
 type GXServerConnectionDefault = {
     serverUrl: string; // URL de GXserver seleccionada
-    user: string;
+    userName: string;
     password: string;
 };
 ```
@@ -69,8 +69,7 @@ type GXServerConnectionData = GXServerConnectionDefault & {
 
 ```
 type ConnectionResultData = {
-success: boolean;
-    [link text](#internal-id)
+    success: boolean;
     errorMessages:[FormElementValidation](#internal-id)[];
 };
 ```
